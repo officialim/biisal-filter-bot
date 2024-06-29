@@ -4,7 +4,7 @@ import math
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
-from info import SETTINGS, STICKERS_IDS,PREMIUM_POINT,MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, LANGUAGES,QUALITIES,YEARS,SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, IMDB_TEMPLATE, LOG_VR_CHANNEL, TUTORIAL, FILE_CAPTION, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, DELETE_TIME
+from info import BIN_CHANNEL, SETTINGS, STICKERS_IDS,PREMIUM_POINT,MAX_BTN, BIN_CHANNEL, USERNAME, URL, ADMINS, LANGUAGES,QUALITIES,YEARS,SEASONS, AUTH_CHANNEL, SUPPORT_GROUP, IMDB, IMDB_TEMPLATE, LOG_VR_CHANNEL, TUTORIAL, FILE_CAPTION, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, DELETE_TIME
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto, ChatPermissions
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid, ChatAdminRequired
@@ -16,10 +16,19 @@ lock = asyncio.Lock()
 from .components.checkFsub import is_user_fsub
 import traceback
 from fuzzywuzzy import process
+from urllib.parse import quote_plus
+from plugins.file_properties import get_name, get_hash, get_media_file_size
 BUTTONS = {}
 FILES_ID = {}
 CAP = {}
 
+@Client.on_callback_query(filters.regex(r"^stream"))
+async def all_File_stream_bot(bot, query):
+    msg = await query.message.copy(chat_id=BIN_CHANNEL)
+    await msg.edit_caption(caption=f"**FILE NAME:** \n[{quote_plus(get_name(msg))}](https://telegram.dog/addlist/a6R50VZLc54yYTA8) \n\n**REQUESTED BY :**\n{query.from_user.mention}\n\nif you don't see stream or download button\njust report that on @renish_rgi_bot because of domin some time it's happening so you need to tell that on @renish_rgi_bot\n\nfor old stream link if not working follow this steps https://t.me/stream_install/13")
+    await asyncio.sleep(2) 
+    await msg.forward(chat_id=query.from_user.id)
+   
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_search(client, message):
     if str(message.text).startswith('/'):
