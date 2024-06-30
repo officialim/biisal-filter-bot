@@ -77,7 +77,7 @@ class Database:
             
     async def get_point(self , id):
         newPoint = await self.col.find_one({'id' : id})
-        return newPoint['point'] if newPoint else 0
+        return newPoint['point'] if newPoint['point'] else 0
         
     async def is_user_exist(self, id):
         user = await self.col.find_one({'id':int(id)})
