@@ -22,7 +22,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '6165486744:AAFW3C6588558QbLWfRD_-ddGAWAfY'
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5344594309').split()]
 USERNAME = environ.get('USERNAME', "https://telegram.me/jacksparrroww1")
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001572413887'))
-MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', '')
+MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', 'https://t.me/+4RB2-U2o9yE4ZmQ9')
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001234567898').split()]
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://username:password@cluster0.jhvfd.mongodb.net/?retryWrites=true&w=majority")
 
@@ -36,9 +36,9 @@ DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','0'))
 URL = environ.get('URL', 'mytestbot-jvdfhbj.com')
 STICKERS_IDS = ('CAACAgQAAxkBAAEK99dlfC7LDqnuwtGRkIoacot_dGC4zQACbg8AAuHqsVDaMQeY6CcRojME').split()
 FILE_AUTO_DEL_TIMER = int(environ.get('FILE_AUTO_DEL_TIMER', '600'))
-IS_VERIFY = is_enabled('IS_VERIFY', True)
+IS_VERIFY = is_enabled('IS_VERIFY', False)
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '0'))
-TUTORIAL = environ.get("TUTORIAL", "https://t.me/New_film_movie_zone")
+TUTORIAL = environ.get("TUTORIAL", "")
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://graph.org/file/1669ab9af68eaa62c3ca4.jpg")
 SHORTENER_API = environ.get("SHORTENER_API", "5bb6e402dd86fb8774690a5f4a65d2a2c0c04877")
 SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", 'shortslink.in')
