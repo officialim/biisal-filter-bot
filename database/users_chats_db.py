@@ -74,9 +74,10 @@ class Database:
             user_data = {"id": id, "expiry_time": expiry_time}
             await db.update_user(user_data)
             await self.col.update_one({'id' : id} , {'$set':{'point' : 0}})
+            
     async def get_point(self , id):
         newPoint = await self.col.find_one({'id' : id})
-        return newPoint['point'] if newPoint else None
+        return newPoint['point'] if newPoint else 0
         
     async def is_user_exist(self, id):
         user = await self.col.find_one({'id':int(id)})
