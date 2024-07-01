@@ -114,7 +114,7 @@ async def group_search(client, message):
             return               
         else:
             try: 
-		dc = await message.reply_text(f"{message.text}🎯sᴇᴀʀᴄʜɪɴɢ...") 
+		dc = await message.reply(f"<b><i>⚠️ `{message.text}` searching...</i></b>") 
                 await asyncio.sleep(5)
                 await dc.delete()
                 await auto_filter(client, message)
