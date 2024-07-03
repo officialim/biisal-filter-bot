@@ -28,7 +28,7 @@ async def all_File_stream_bot(bot, query):
     await msg.edit_caption(caption=f"**FILE NAME:** \n[{quote_plus(get_name(msg))}](https://telegram.dog/addlist/a6R50VZLc54yYTA8) \n\n**REQUESTED BY :**\n{query.from_user.mention}\n\nif you don't see stream or download button\njust report that on @renish_rgi_bot because of domin some time it's happening so you need to tell that on @renish_rgi_bot\n\nfor old stream link if not working follow this steps https://t.me/stream_install/13")
     await asyncio.sleep(2) 
     await msg.forward(chat_id=query.from_user.id)
-
+   
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_search(client, message):
     if str(message.text).startswith('/'):
@@ -114,9 +114,6 @@ async def group_search(client, message):
             return               
         else:
             try: 
-		s = await message.reply(f"<b><i>⚠️ `{message.text}` searching...</i></b>") 
-                await asyncio.sleep(5)
-                await dc.delete()
                 await auto_filter(client, message)
             except Exception as e:
                 traceback.print_exc()
