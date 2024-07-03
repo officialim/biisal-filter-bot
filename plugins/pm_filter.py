@@ -29,8 +29,6 @@ async def all_File_stream_bot(bot, query):
     await asyncio.sleep(2) 
     await msg.forward(chat_id=query.from_user.id)
 
-s = await message.reply(f"<b><i>⚠️ `{message.text}` searching...</i></b>")
-
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_search(client, message):
     if str(message.text).startswith('/'):
